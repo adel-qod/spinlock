@@ -90,11 +90,11 @@ Style issues:
 		* Use std::unique_ptr as your default and std::shared_ptr
 			only when you know the object has to be shared
 		* If there is a truly exceptional case that requires raw 
-			raw pointers, then use them with care and never return
+			pointers, then use them with care and never return
 			them from a public/protected method
 		* Use RAII; really, just use it.
 	** Parameters:
-		* Pass by parameters by const reference as your default
+		* Pass parameters by const reference as your default
 		* When you have a smart-pointer to an object, pass it as
 			a smart-pointer not as a reference to the object or
 			a pointer to it.
@@ -109,7 +109,7 @@ Style issues:
 		* When you need a larger range or specific bit-length
 			include <cstdint>
 	** Typedef:
-		* Do not use them; and they don't make pointers or objects
+		* Do not use them; and no, they don't make pointers or objects
 			more readable
 	** auto type:
 		* Don't ever use them as parameters, and avoid using them 
