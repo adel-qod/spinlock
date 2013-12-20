@@ -12,14 +12,14 @@
 class Spinlock
 {
 public:
-	Spinlock();
-	Spinlock(const Spinlock &) = delete; 
-	void lock();
-	bool unlock();// Returns true only if called by the owner of lock
-	Spinlock & operator=(const Spinlock &) = delete;
-	~Spinlock();
+    Spinlock();
+    Spinlock(const Spinlock &) = delete; 
+    void lock();
+    bool unlock();// Returns true only if called by the owner of lock
+    Spinlock & operator=(const Spinlock &) = delete;
+    ~Spinlock();
 private:
-	std::atomic<bool> lock_variable;// true only if Spinlock's locked
-	std::atomic<std::thread::id> owner;// valid only when lock_cond is true
+    std::atomic<bool> lock_variable;// true only if Spinlock's locked
+    std::atomic<std::thread::id> owner;// valid only when lock_cond is true
 };
 #endif

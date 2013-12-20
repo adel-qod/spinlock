@@ -49,7 +49,9 @@ Style issues:
 	* Hungarian notation is strictly prohibited
 
 	** Identation:
-	* Use tabs, never spaces
+	* Use spaces, never tabs; the shift-width is 4 spaces for each level
+    * The reason behind this is that tabs waste space and add little clarity
+        over the 4-space indentation
 	* Try not to exceed 4 levels
 
 	** Curely braces:
