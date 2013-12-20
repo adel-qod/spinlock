@@ -1,0 +1,15 @@
+	A portable C++11 implementation of spinlock
+
+	Help files:
+	
+	For the technical details: DOC
+	For the requirements: REQ
+	For the code-style: STYLE
+	For the license text: LICENSE
+
+	The code and associated documentation are licensed under: 
+		BSD 2-clause licence
+	
+	Contact info:
+			Adel Qodmani
+			mpcadel@gmail.com

@@ -1,0 +1,18 @@
+To provide the locking mechansim, we'll define an atomic integer to be used
+	as our lock.
+When a thread wants to lock and no other has acquired the lock; we set the 
+	lock value to be 1 and then let the thread go and we save the owner of
+	the lock to be this thread.
+When a thread wants to lock but the lock is already acquired, we make the 
+	thread loop checking the value of the lock until it becomes 0
+	once that happens, we set the lock value to be 1 and save the onwer of 
+	the lock to be this thread.
+When a thread calls unlock, we check if the caller is the same thread that has
+	acquired the lock, if yes we set the lock value to be 0.
+	If the caller is not the same thread that has acquired the lock, we 
+	return an error.
+*****************************************************************************
+A note on performance:
+Actual testing shows that using a mutex would generally provide a better 
+	performance than using a spinlock when there's contension.
+	(Test was done using a multi-core Intel machine)

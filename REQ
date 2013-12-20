@@ -1,0 +1,31 @@
+The project's aim is to build a portable, C++11 spinlock.
+
+Functional requirements:
+	-------------------------- Release 0.9 -------------------------
+	1- Only exactly one thead may acquire a spinlock.
+	2- Only the thread that has acquired the spinlock can release it.
+	3- The area marked between the lock and the unlock cannot be excuted
+		by more than one thread at a time.
+	-------------------------- Later -------------------------------
+	4- If several threads were waiting on the lock; the one that acquires
+		the lock first is the thread that attempted the lock first.
+		(First come first serve)
+
+Non-functional requirements:
+	-------------------------- Release 0.9 -------------------------
+	(I am not sure if these are non-functional, correct me if I am wrong)
+	1- In case of contention, the lock operation does not cause the calling
+		thread to sleep, it causes it to keep polling the lock value
+		(hence why it's called a spin-lock) 
+	2- The lock carries an _acquire_ memory fence semantics
+	3- The unlock carries a _release_ memory fence semantics
+
+Assumptions:
+	1- The caller is using C++11.
+	2- The caller is using C++11 threads and not any other thread
+	
+The current version does NOT provide:
+	1- Any protection against deadlocks
+	2- Any protection against priority-inversion
+	3- A trylock-like method
+	4- Recursive locking

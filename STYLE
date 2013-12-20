@@ -1,0 +1,129 @@
+File organization:
+	* One class per cpp file
+	* Every class MUST have a corresponding header file
+
+
+Header files:
+	* Only one class is included per header
+	* Header file names should be the same as the class name they contain
+	* Always have an include guard
+	* The include guard has the form: PATH_TO_FILE_CLASS_NAME_H
+	* Include any other headers in the order:
+		System specific (eg unistd.h socket.h)
+		C standard library headers
+		C++ standard library headers
+		External libraries headers
+		Project headers
+	* Macros are NOT ALLOWED in header files
+	* Classes have their attributes ordered this way:
+		constructor/s (if public)
+		public methods(not setter/getter methods)
+		Operators
+		public methods(setter/getter methods)
+		public constants
+		public variables
+		destructor
+		- then as in the previous order
+		protected .
+		- then as in the previous order
+		private .
+
+	
+C++ files:
+	* Include headers following the same style previously specified
+	* Any macros must follow the includes and precede the code
+	* Every function must leave exactly one blank line before it
+	* Functions/methods appear in the same order as they appeared in the 
+		corresponding header file	
+Style issues:
+	** Names:
+	* Class names are CamelCase
+	* All other names use under-scores and all lower-case
+		Example:
+		bool is_free();
+	* Public variables must have descriptive names and no abbreviations
+	* Private variables can be short and use abbreviations as long
+		as they are private inside a function and the meaning is 
+		clear even to a 5 years old child.
+	* Constants and macros are ALL_CAPS
+	* Hungarian notation is strictly prohibited
+
+	** Identation:
+	* Use tabs, never spaces
+	* Try not to exceed 4 levels
+
+	** Curely braces:
+	* In case of functions and classes, they are NEVER placed at the 
+		same line as the decalarition but always after it
+		Example:
+		void foo() 
+		{
+		}
+
+		class Bar
+		{
+		};
+	* For the conditionals(if, switch, loops), they follow the conditional
+		clause with exactly one space in between:
+		Example:
+		if() {
+		}
+	
+	** Do not add 'using namespace' statements, use full names
+
+	** Never let your code width exceed the 80 characters per line
+
+	** Comments:
+		* Use only the // comments with exactly one space between the
+			the text and the // 
+		* Comments precede the thing being descriped OR they are on the
+			same line as the thing being descriped if they can be
+			contained in one line
+**Language features:
+	** Memory:
+		* Alloacte on the stack as long as you know it's safe to do so
+		* Allocate on the heap only when:
+			The object is huge
+			OR
+			The object needs to live on after its scope
+		* Avoid using raw-pointers at all costs, use smart-pointers
+		* Use std::unique_ptr as your default and std::shared_ptr
+			only when you know the object has to be shared
+		* If there is a truly exceptional case that requires raw 
+			raw pointers, then use them with care and never return
+			them from a public/protected method
+		* Use RAII; really, just use it.
+	** Parameters:
+		* Pass by parameters by const reference as your default
+		* When you have a smart-pointer to an object, pass it as
+			a smart-pointer not as a reference to the object or
+			a pointer to it.
+		* Passing the smart-pointers themselves by reference isn't a
+			bad idea and you're encouraged to do so.
+		* When writing a method/function and you don't know what the 
+			caller will pass (that is, you don't know what kind 
+			of allocation they made); then your parameters should
+			be references (and const whenever possible)
+	** Integers:
+		* Use int and unsigned int only; nothing else
+		* When you need a larger range or specific bit-length
+			include <cstdint>
+	** Typedef:
+		* Do not use them; and they don't make pointers or objects
+			more readable
+	** auto type:
+		* Don't ever use them as parameters, and avoid using them 
+			unless any code reader can tell right away what the
+			object truly is
+	** assert
+		* Never use it to check for error-handling; it's a debugging 
+			tool.
+		* A good usage is to put your pre-conditions in assertions.
+	** Atomics:
+		* Do not use the = operator or other operators that are 
+			overloaded by default, use the explicit functions.
+			It makes spotting atomics in code easier.
+	** Boost:
+		* Avoid using Boost when there's something in the Standard 
+			Library you can use instead.
+	
