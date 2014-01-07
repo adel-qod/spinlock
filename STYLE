@@ -48,15 +48,15 @@ Style issues:
 	* Constants and macros are ALL_CAPS
 	* Hungarian notation is strictly prohibited
 
-	** Identation:
+	** Indentation:
 	* Use spaces, never tabs; the shift-width is 4 spaces for each level
     * The reason behind this is that tabs waste space and add little clarity
         over the 4-space indentation
 	* Try not to exceed 4 levels
 
-	** Curely braces:
+	** Curly braces:
 	* In case of functions and classes, they are NEVER placed at the 
-		same line as the decalarition but always after it
+		same line as the declaration but always after it
 		Example:
 		void foo() 
 		{
@@ -78,8 +78,8 @@ Style issues:
 	** Comments:
 		* Use only the // comments with exactly one space between the
 			the text and the // 
-		* Comments precede the thing being descriped OR they are on the
-			same line as the thing being descriped if they can be
+		* Comments precede the thing being described OR they are on the
+			same line as the thing being described if they can be
 			contained in one line
 **Language features:
 	** Memory:
