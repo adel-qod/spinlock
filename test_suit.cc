@@ -7,7 +7,7 @@
 unsigned int counter;
 Spinlock spin;
 std::mutex mutex;
-const int T_COUNT = 2;
+const int T_COUNT = 10;
 
 void count()
 {
@@ -22,7 +22,7 @@ void lock_test()
 {
     spin.lock();
     std::cout<<"Hello!\n";
-    // Since I won't lock it, only one thread should print the msg
+    // Since I won't unlock it, only one thread should print the msg
 }
 
 void unlock_test()
@@ -48,12 +48,12 @@ int main()
     // t1.join();
     // t2.join();
 
-    std::thread t3(unlock_test);
-    std::cout<<spin.unlock();
-    std::thread t4(unlock_test);
-    std::cout<<spin.unlock();
-    t3.join();
-    t4.join();
+    //std::thread t3(unlock_test);
+    //std::cout<<spin.unlock();
+    //std::thread t4(unlock_test);
+    //std::cout<<spin.unlock();
+    //t3.join();
+    //t4.join();
 
     return 0;
 }
