@@ -113,10 +113,6 @@ Style issues:
 	** Typedef:
 		* Do not use them; and no, they don't make pointers or objects
 			more readable
-	** auto type:
-		* Don't ever use them as parameters, and avoid using them 
-			unless any code reader can tell right away what the
-			object truly is
 	** assert
 		* Never use it to check for error-handling; it's a debugging 
 			tool.
